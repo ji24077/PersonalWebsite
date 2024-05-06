@@ -1,0 +1,12 @@
+/* src/components/AboutPage/AboutPage.module.css */
+.aboutSection {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+  }
+  
+  .aboutText {
+    text-align: left;
+  }
+  
