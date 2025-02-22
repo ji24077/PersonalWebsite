@@ -27,7 +27,7 @@ window.addEventListener("scroll", function() {
 
 /* ----- TYPING EFFECT ----- */
 var typingEffect = new Typed(".typedText",{
-    strings : ["AI Enthusiast", "Data Scientist", "Software Engineer", "Problem Solver","Computer Science Student","Statistics Student"],
+    strings : ["AI Engineer", "Data Scientist", "ML Developer"],
     loop : true,
     typeSpeed : 100, 
     backSpeed : 80,
@@ -139,29 +139,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectBoxes = document.querySelectorAll('.project-box');
 
-    console.log('Found filter buttons:', filterButtons.length);
-    console.log('Found project boxes:', projectBoxes.length);
+    // ScrollReveal 초기화 해제 함수
+    function resetScrollReveal() {
+        projectBoxes.forEach(box => {
+            sr.clean(box);  // ScrollReveal 효과 제거
+        });
+    }
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log('Button clicked:', button.getAttribute('data-filter'));
-
+            // ScrollReveal 효과 초기화
+            resetScrollReveal();
+            
+            // 활성 버튼 표시 업데이트
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
+            // 필터링 로직
             const filterValue = button.getAttribute('data-filter');
-            console.log('Filter value:', filterValue);
-
+            
             projectBoxes.forEach(box => {
-                const category = box.getAttribute('data-category');
-                console.log('Project category:', category);
-
-                if (filterValue === 'all' || category === filterValue) {
-                    box.classList.remove('hide');
-                    console.log('Showing project:', box.querySelector('h3').textContent);
+                if (filterValue === 'all' || box.getAttribute('data-category') === filterValue) {
+                    box.style.display = 'block';  // display 직접 제어
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
                 } else {
-                    box.classList.add('hide');
-                    console.log('Hiding project:', box.querySelector('h3').textContent);
+                    box.style.display = 'none';  // display 직접 제어
                 }
             });
         });
@@ -384,3 +387,34 @@ function reloadDemo(demoFrame) {
 
 // ScrollReveal animation for project boxes
 sr.reveal('.project-box', { interval: 200 });
+
+// Social Media Links
+const socialLinks = {
+    github: 'https://github.com/yourusername',
+    linkedin: 'https://linkedin.com/in/yourusername',
+    kaggle: 'https://kaggle.com/yourusername',
+    email: 'mailto:your.email@domain.com'
+};
+
+// Social Icons Click Handler
+document.querySelectorAll('.featured-box .social_icons .icon').forEach((icon, index) => {
+    icon.addEventListener('click', () => {
+        const links = Object.values(socialLinks);
+        window.open(links[index], '_blank');
+    });
+});
+
+// Smooth Scroll for "View Projects" button
+document.querySelector('.featured-text-btn .blue-btn').addEventListener('click', () => {
+    document.querySelector('#projects').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
+
+// Smooth Scroll for Scroll Down button
+document.querySelector('.scroll-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('#about').scrollIntoView({
+        behavior: 'smooth'
+    });
+});
