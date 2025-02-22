@@ -390,10 +390,9 @@ sr.reveal('.project-box', { interval: 200 });
 
 // Social Media Links
 const socialLinks = {
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
-    kaggle: 'https://kaggle.com/yourusername',
-    email: 'mailto:your.email@domain.com'
+    github: 'https://github.com/ji24077',
+    linkedin: 'https://www.linkedin.com/in/ji-sung-han-200074304/',
+    email: 'mailto:yhs24077@gmail.com'
 };
 
 // Social Icons Click Handler
