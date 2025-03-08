@@ -442,11 +442,25 @@ body{
         rgba(0, 191, 255, 0.6),
         rgba(0, 163, 224, 0.4)
     );
-    animation: float 3s ease-in-out infinite;
+    animation: floatAnimation 3s ease-in-out infinite;
     box-shadow: 
         0 10px 20px rgba(0, 0, 0, 0.08),
         0 6px 6px rgba(0, 0, 0, 0.05),
         0 0 50px rgba(0, 191, 255, 0.1);
+}
+
+.featured-image .image::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 10px;
+    background: rgba(0, 191, 255, 0.2);
+    filter: blur(8px);
+    border-radius: 50%;
+    animation: shadowAnimation 3s ease-in-out infinite;
 }
 
 .featured-image .image img {
@@ -456,7 +470,7 @@ body{
     border-radius: 50%;
     position: relative;
     z-index: 2;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .scroll-icon-box {
@@ -787,6 +801,91 @@ h3{
     }
 }
 
+/* Experience 섹션 네온 효과 */
+.timeline-item {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-content {
+    position: relative;
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid rgba(0, 191, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 호버 효과 */
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid var(--first-color);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+}
+
+/* 연도 네온 효과 */
+.timeline-date {
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid var(--first-color);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-date {
+    background: var(--first-color);
+    color: var(--body-color);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+/* 타임라인 점 네온 효과 */
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--body-color);
+    border: 2px solid var(--first-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--first-color);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+}
+
+/* 기술 스택 태그 네온 효과 */
+.tech-stack span {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 191, 255, 0.2);
+}
+
+.timeline-item:hover .tech-stack span {
+    background: rgba(0, 191, 255, 0.1);
+    border-color: var(--first-color);
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+}
+
+/* 타임라인 선 네온 효과 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 191, 255, 0.1),
+        rgba(0, 191, 255, 0.2),
+        rgba(0, 191, 255, 0.1)
+    );
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover ~ .timeline::before {
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
 @media screen and (max-width: 480px) {
     .category-box {
         padding: 20px;
@@ -951,6 +1050,7 @@ footer{
     opacity: 1;
     transform: translateY(0);
     transition: all 0.3s ease;
+    display: block;
 }
 
 .project-box.hide {
@@ -2023,6 +2123,13 @@ nav.sticky .btn.blue-btn {
     margin: 0 auto;
 }
 
+.project-box {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    display: block;
+}
+
 .project-card {
     background: var(--container-color);
     border-radius: 1rem;
@@ -2321,4 +2428,65 @@ nav.sticky .btn.blue-btn {
 /* Hide class for filtered items */
 .project-box.hide {
     display: none;
+}
+
+/* 메인 섹션 아바타 애니메이션 - 다른 섹션에 영향 없음 */
+.featured-image .image {
+    position: relative;
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.featured-image .image::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 10px;
+    background: rgba(0, 191, 255, 0.2);
+    filter: blur(8px);
+    border-radius: 50%;
+    animation: shadowAnimation 3s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes shadowAnimation {
+    0%, 100% {
+        width: 80%;
+        opacity: 0.3;
+    }
+    50% {
+        width: 60%;
+        opacity: 0.2;
+    }
+}
+
+/* 이미지 호버 효과 */
+.featured-image .image img {
+    transition: all 0.3s ease;
+}
+
+.featured-image .image:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Projects 섹션 설명 스타일 */
+.section-description {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
 }

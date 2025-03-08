@@ -27,7 +27,7 @@ window.addEventListener("scroll", function() {
 
 /* ----- TYPING EFFECT ----- */
 var typingEffect = new Typed(".typedText",{
-    strings : ["AI Engineer", "Data Scientist", "ML Developer"],
+    strings : ["Software Engineer", "Data Scientist", "ML Developer", "AI Engineer", "Computer Science Student", "Statistics Student"],
     loop : true,
     typeSpeed : 100, 
     backSpeed : 80,
