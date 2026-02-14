@@ -392,7 +392,7 @@ sr.reveal('.project-box', { interval: 200 });
 const socialLinks = {
     github: 'https://github.com/ji24077',
     linkedin: 'https://www.linkedin.com/in/ji-sung-han-200074304/',
-    email: 'mailto:yhs24077@gmail.com'
+    email: 'mailto:jishan.han@mail.utoronto.ca'
 };
 
 // Social Icons Click Handler
